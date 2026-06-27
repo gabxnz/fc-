@@ -129,7 +129,7 @@ export default {
   align-items: flex-start; 
   padding: 15px 10px;
   border-bottom: 1px dotted #ccc;
-  gap: 15px; /* Aumenta o espaço em branco entre as colunas */
+  gap: 15px; 
 }
 .cabecalho { 
   font-weight: bold; 
@@ -137,15 +137,14 @@ export default {
   align-items: center; 
 }
 
-/* --- AQUI ESTÁ A MÁGICA --- */
 .col-id { 
-  width: 10%; /* Aumentamos de 5% para 10% para o ID respirar */
+  width: 10%; 
   min-width: 50px;
   font-weight: bold; 
   flex-shrink: 0;
 }
 .col-padrao { 
-  width: 15%; /* Reduzimos de 17% para 15% para compensar o ID */
+  width: 15%; 
   word-wrap: break-word; 
   overflow-wrap: break-word;
 }

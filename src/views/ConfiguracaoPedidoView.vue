@@ -1,9 +1,10 @@
 <template>
   <div>
-    <h1>Configuração do Pedido</h1>
-    <pedido-component-vue :burguer="hamburguerSelecionado" />
+    <h1 class="titulo-pagina">Personalizar Encomenda</h1>
+    <pedido-component-vue :burguer="camisaSelecionada" />
   </div>
 </template>
+
 <script>
 import PedidoComponentVue from "@/components/PedidoComponent.vue";
 
@@ -14,16 +15,27 @@ export default {
   },
   data() {
     return {
-      hamburguerSelecionado: null,
+      camisaSelecionada: null,
     };
   },
   mounted() {
     const query = this.$route.query;
-    if (query.burguer) {
-      const decodeBurguer = JSON.parse(decodeURIComponent(query.burguer));
-      this.hamburguerSelecionado = decodeBurguer;
+    const dadosManto = query.camisa || query.burguer;
+    
+    if (dadosManto) {
+      const decodeCamisa = JSON.parse(decodeURIComponent(dadosManto));
+      this.camisaSelecionada = decodeCamisa;
     }
   },
 };
 </script>
-<style scoped></style>
+
+<style scoped>
+.titulo-pagina {
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 40px;
+  font-size: 28px;
+  font-weight: bold;
+}
+</style>

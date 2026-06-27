@@ -5,14 +5,14 @@
         <h2>Escolha seu Manto Retrô</h2>
       </div>
 
-      <div id="menu-burguers">
+      <div id="menu-camisas">
         <div
-          class="burguer-card"
-          v-for="camisa in listaBurgues"
+          class="camisa-card"
+          v-for="camisa in listaCamisas"
           :key="camisa.id"
         >
-          <img :src="camisa.foto" class="burguer-img" />
-          <div class="burguer-info">
+          <img :src="camisa.foto" class="camisa-img" />
+          <div class="camisa-info">
             <h3>{{ camisa.nome }}</h3>
             <p>{{ camisa.descricao }}</p>
             <p class="valor">R$ {{ camisa.valor.toFixed(2) }}</p>
@@ -31,20 +31,21 @@ export default {
   name: "MenuView",
   data() {
     return {
-      listaBurgues: [],
+      listaCamisas: [],
     };
   },
   methods: {
     async getCamisas() {
       const response = await fetch(`${this.$apiUrl}/menu`);
       const dados = await response.json();
-      this.listaBurgues = dados.burgues;
+      // Mantemos o '.burgues' aqui porque é o nome da lista dentro do seu db.json
+      this.listaCamisas = dados.burgues;
     },
     irParaConfiguracao(camisa) {
       const camisaString = encodeURIComponent(JSON.stringify(camisa));
       this.$router.push({
         path: "/config-pedido",
-        query: { burguer: camisaString },
+        query: { camisa: camisaString }, // Mudado para 'camisa' (já configurado na outra tela)
       });
     },
   },
@@ -68,13 +69,13 @@ export default {
   font-size: 32px;
   color: #1a1a1a;
 }
-#menu-burguers {
+#menu-camisas {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   gap: 20px;
 }
-.burguer-card {
+.camisa-card {
   width: 350px;
   border: 1px solid #e0e0e0;
   border-radius: 15px;
@@ -82,28 +83,28 @@ export default {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   background-color: #fff;
 }
-.burguer-img {
+.camisa-img {
   width: 100%;
   height: 250px;
   object-fit: cover;
 }
-.burguer-info {
+.camisa-info {
   padding: 20px;
   text-align: left;
 }
-.burguer-info h3 {
+.camisa-info h3 {
   font-size: 22px;
   margin-bottom: 10px;
   color: #1a1a1a;
 }
-.burguer-info p {
+.camisa-info p {
   font-size: 14px;
   color: #7f8c8d;
   margin-bottom: 15px;
   height: 60px;
   overflow: hidden;
 }
-.burguer-info .valor {
+.camisa-info .valor {
   font-size: 18px;
   font-weight: bold;
   color: #2980b9;

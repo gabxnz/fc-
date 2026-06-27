@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Olá Pedidos</h1>
+    <h1>Olá!</h1>
     <lista-pedido-component-vue />
   </div>
 </template>

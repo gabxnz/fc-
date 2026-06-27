@@ -1,5 +1,5 @@
 {
-  "name": "tburguer",
+  "name": "retro-fc",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -18,6 +18,6 @@
     "@vue/cli-service": "~5.0.0",
     "json-server": "^1.0.0-beta.15"
   },
-  "_id": "tburguer@0.1.0",
+  "_id": "retro-fc@0.1.0",
   "readme": "ERROR: No README data found!"
 }
